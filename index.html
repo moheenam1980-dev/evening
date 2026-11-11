@@ -1,0 +1,162 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>أسماء المقبولين — الدراسة المسائية | كلية علوم الحاسوب والرياضيات</title>
+<meta name="description" content="قائمة أسماء الطلبة المقبولين في الدراسة المسائية — كلية علوم الحاسوب والرياضيات، جامعة الموصل">
+<meta name="theme-color" content="#232260">
+<link rel="icon" href="favicon.png">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Tajawal:wght@400&display=swap" rel="stylesheet">
+<style>
+:root{
+  --bg:#232260; --panel:rgba(255,255,255,.06); --panel2:rgba(255,255,255,.09); --line:rgba(255,255,255,.13);
+  --text:#ffffff; --muted:#b4b7e3; --teal:#4fd6db; --blue:#5b6cf0;
+  --c1:#4fd6db; --c2:#b3a6ff; --c3:#8fb4ff;
+}
+*{box-sizing:border-box;margin:0;padding:0}
+html{scroll-behavior:smooth}
+body{
+  font-family:"Tajawal",system-ui,Tahoma,sans-serif;background:var(--bg);color:var(--text);
+  min-height:100vh;line-height:1.6;
+  background-image:
+    radial-gradient(900px 500px at 100% 0%, rgba(59,59,136,.9), transparent 60%),
+    radial-gradient(800px 500px at 0% 0%, rgba(40,51,117,.9), transparent 60%),
+    linear-gradient(180deg,#232260,#1d1c52);
+  background-attachment:fixed;
+}
+.wrap{max-width:900px;margin:0 auto;padding:0 18px}
+
+/* Header */
+header{padding:42px 0 26px;text-align:center}
+.logo{
+  width:118px;height:118px;border-radius:50%;margin:0 auto 18px;background:#fff;
+  box-shadow:0 0 0 4px rgba(46,196,201,.25),0 0 40px rgba(46,196,201,.35);
+  display:block;object-fit:cover;animation:float 6s ease-in-out infinite;
+}
+@keyframes float{50%{transform:translateY(-6px)}}
+h1{font-size:clamp(1.7rem,5.2vw,2.6rem);font-weight:400;color:#fff;margin:6px 0 4px;line-height:1.35}
+h2{font-size:clamp(1.25rem,3.6vw,1.6rem);font-weight:400;color:#dfe1ff;margin:0 0 2px;line-height:1.4}
+.sub{color:var(--muted);font-size:clamp(1rem,2.8vw,1.1rem)}
+.badge{
+  display:inline-flex;align-items:center;gap:8px;margin-top:14px;padding:6px 16px;border-radius:99px;
+  background:rgba(46,196,201,.1);border:1px solid rgba(46,196,201,.3);color:var(--teal);font-weight:400;font-size:.9rem
+}
+.badge::before{content:"";width:8px;height:8px;border-radius:50%;background:var(--teal);box-shadow:0 0 10px var(--teal)}
+
+/* Search */
+.search{position:sticky;top:0;z-index:5;padding:12px 0;background:transparent}
+.field{position:relative}
+.field svg{position:absolute;right:18px;top:50%;transform:translateY(-50%);width:22px;height:22px;color:var(--muted);pointer-events:none}
+#q{
+  width:100%;font:inherit;font-size:1.08rem;color:var(--text);background:#2c2b72;
+  border:1.5px solid var(--line);border-radius:16px;padding:16px 54px 16px 50px;outline:none;transition:.2s
+}
+#q::-webkit-search-cancel-button{-webkit-appearance:none;display:none}
+#q::placeholder{color:#8f93c9}
+#q:focus{border-color:var(--teal);box-shadow:0 0 0 4px rgba(46,196,201,.15)}
+#clear{
+  position:absolute;left:12px;top:50%;transform:translateY(-50%);border:0;background:var(--line);color:var(--text);
+  width:30px;height:30px;border-radius:50%;cursor:pointer;font-size:1rem;display:none
+}
+#clear.show{display:block}
+.info{color:var(--muted);font-size:.9rem;margin-top:10px;min-height:1.4em}
+.info b{color:var(--text);font-weight:400}
+
+/* List */
+.list{display:flex;flex-direction:column;gap:8px;padding-bottom:30px}
+.row{
+  display:flex;align-items:center;gap:14px;background:var(--panel);border:1px solid var(--line);
+  border-radius:14px;padding:12px 16px;animation:in .25s ease both
+}
+@keyframes in{from{opacity:0;transform:translateY(6px)}}
+.num{
+  flex:0 0 38px;height:38px;border-radius:11px;display:grid;place-items:center;font-weight:400;font-size:.9rem;
+  background:var(--panel2);color:var(--muted)
+}
+.name{flex:1;font-weight:400;font-size:1.05rem;min-width:0}
+mark{background:rgba(79,214,219,.25);color:#9ff7fa;border-radius:4px;padding:0 2px}
+.dep{
+  flex:0 0 auto;font-size:.85rem;font-weight:400;padding:5px 12px;border-radius:99px;white-space:nowrap;
+  color:var(--accent);background:color-mix(in srgb,var(--accent) 13%,transparent);
+  border:1px solid color-mix(in srgb,var(--accent) 35%,transparent)
+}
+.empty{text-align:center;padding:50px 20px;color:var(--muted);background:var(--panel);border:1px dashed var(--line);border-radius:16px}
+.empty div{font-size:2.4rem;margin-bottom:6px}
+footer{margin-top:30px;text-align:center;color:#9a9dd0;font-size:.85rem;padding:20px 0 34px;border-top:1px solid var(--line)}
+footer b{color:var(--muted);font-weight:400}
+
+@media (max-width:600px){
+  .row{flex-wrap:wrap;gap:8px 12px;padding:12px}
+  .num{flex-basis:32px;height:32px}
+  .name{font-size:1rem}
+  .dep{margin-right:44px}
+}
+@media (prefers-reduced-motion:reduce){*{animation:none!important;transition:none!important}}
+</style>
+</head>
+<body>
+<div class="wrap">
+  <header>
+    <img class="logo" src="logo.png" alt="شعار كلية علوم الحاسوب والرياضيات">
+    <h1>كلية علوم الحاسوب والرياضيات</h1>
+    <h2>أسماء الطلبة المقبولين</h2>
+    <div class="sub">الدراسة المسائية — العام الدراسي 2026 / 2027</div>
+  </header>
+
+  <div class="search">
+    <div class="field">
+      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><circle cx="11" cy="11" r="7"/><path d="m20 20-3.5-3.5"/></svg>
+      <input id="q" type="search" autocomplete="off" placeholder="اكتب اسم الطالب…">
+      <button id="clear" aria-label="مسح">✕</button>
+    </div>
+    <div class="info" id="info"></div>
+  </div>
+
+  <main class="list" id="list"></main>
+
+</div>
+<footer>designed by <b>OMAR INAAM</b></footer>
+
+<script src="students.js"></script>
+<script>
+const COLORS=["var(--c1)","var(--c2)","var(--c3)","#f59f00","#e64980","#40c057"];
+const deps=[...new Set(STUDENTS.map(s=>s[1]))];
+const color=d=>COLORS[deps.indexOf(d)%COLORS.length];
+
+// تطبيع النص العربي للبحث
+const norm=t=>t.replace(/[ً-ْـ]/g,"").replace(/[أإآٱ]/g,"ا").replace(/ة/g,"ه").replace(/ى/g,"ي").replace(/ؤ/g,"و").replace(/ئ/g,"ي").replace(/\s+/g," ").trim();
+const data=STUDENTS.map(([n,d],i)=>({n,d,i:i+1,k:norm(n)}));
+const esc=s=>s.replace(/[&<>"]/g,c=>({"&":"&amp;","<":"&lt;",">":"&gt;",'"':"&quot;"}[c]));
+
+
+// تمييز الجزء المطابق مع مراعاة التطبيع
+function highlight(name,terms){
+  if(!terms.length)return esc(name);
+  const map=[];let nk="";
+  for(let i=0;i<name.length;i++){const c=norm(name[i]);if(name[i]===" "){if(nk&&nk.at(-1)!==" "){nk+=" ";map.push(i)}continue}
+    for(const ch of c){nk+=ch;map.push(i)}}
+  const mark=new Array(name.length).fill(false);
+  for(const t of terms){let p=nk.indexOf(t);while(p>-1){for(let j=p;j<p+t.length;j++)mark[map[j]]=true;p=nk.indexOf(t,p+1)}}
+  let out="",on=false;
+  for(let i=0;i<name.length;i++){if(mark[i]!==on){out+=on?"</mark>":"<mark>";on=mark[i]}out+=esc(name[i])}
+  return out+(on?"</mark>":"");
+}
+
+const q=document.getElementById("q"),list=document.getElementById("list"),info=document.getElementById("info"),clr=document.getElementById("clear");
+function render(){
+  const raw=q.value.trim(),terms=norm(raw).split(" ").filter(Boolean);
+  clr.classList.toggle("show",!!raw);
+  const res=data.filter(s=>terms.every(t=>s.k.includes(t)));
+  info.innerHTML=raw?`عدد النتائج: <b>${res.length}</b>`:"";
+  if(!res.length){list.innerHTML=`<div class="empty"><div>🔍</div>لا توجد نتائج مطابقة لـ «${esc(raw)}»<br>تأكد من كتابة الاسم بشكل صحيح أو جرّب جزءاً منه.</div>`;return}
+  list.innerHTML=res.map((s,k)=>`<div class="row" style="--accent:${color(s.d)};animation-delay:${Math.min(k,15)*18}ms"><div class="num">${s.i}</div><div class="name">${highlight(s.n,terms)}</div><div class="dep">${esc(s.d)}</div></div>`).join("");
+}
+let tm;q.addEventListener("input",()=>{clearTimeout(tm);tm=setTimeout(render,120)});
+clr.onclick=()=>{q.value="";render();q.focus()};
+render();
+</script>
+</body>
+</html>
