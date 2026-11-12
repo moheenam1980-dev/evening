@@ -47,7 +47,15 @@ h2{font-size:clamp(1.25rem,3.6vw,1.6rem);font-weight:400;color:#dfe1ff;margin:0 
 .badge::before{content:"";width:8px;height:8px;border-radius:50%;background:var(--teal);box-shadow:0 0 10px var(--teal)}
 
 /* Search */
-.search{position:sticky;top:0;z-index:5;padding:12px 0;background:transparent}
+.top{position:sticky;top:0;z-index:6;padding:0 18px;margin:0 -18px;background:rgba(35,34,96,.94);backdrop-filter:blur(10px);-webkit-backdrop-filter:blur(10px);box-shadow:0 0 0 100vmax rgba(35,34,96,.94);clip-path:inset(0 -100vmax)}
+.search{padding:4px 0 12px}
+/* الشريط العلوي يصغر عند النزول */
+header,.logo,h1,h2,.sub{transition:all .25s ease}
+.top.compact header{padding:10px 0 6px}
+.top.compact .logo{width:54px;height:54px;margin-bottom:6px;animation:none;box-shadow:0 0 0 2px rgba(46,196,201,.3)}
+.top.compact h1{font-size:clamp(1.1rem,3.6vw,1.45rem);margin:0}
+.top.compact h2{font-size:clamp(.95rem,3vw,1.1rem)}
+.top.compact .sub{font-size:.85rem}
 .field{position:relative}
 .field svg{position:absolute;right:18px;top:50%;transform:translateY(-50%);width:22px;height:22px;color:var(--muted);pointer-events:none}
 #q{
@@ -62,43 +70,40 @@ h2{font-size:clamp(1.25rem,3.6vw,1.6rem);font-weight:400;color:#dfe1ff;margin:0 
   width:30px;height:30px;border-radius:50%;cursor:pointer;font-size:1rem;display:none
 }
 #clear.show{display:block}
-.info{color:var(--muted);font-size:.9rem;margin-top:10px;min-height:1.4em}
+.info{color:var(--muted);font-size:.9rem;margin-top:8px}
+.info:empty{display:none}
 .info b{color:var(--text);font-weight:400}
 
-/* List */
-.list{display:flex;flex-direction:column;gap:8px;padding-bottom:30px}
-.row{
-  display:flex;align-items:center;gap:14px;background:var(--panel);border:1px solid var(--line);
-  border-radius:14px;padding:12px 16px;animation:in .25s ease both
-}
-@keyframes in{from{opacity:0;transform:translateY(6px)}}
-.num{
-  flex:0 0 38px;height:38px;border-radius:11px;display:grid;place-items:center;font-weight:400;font-size:.9rem;
-  background:var(--panel2);color:var(--muted)
-}
-.name{flex:1;font-weight:400;font-size:1.05rem;min-width:0}
+/* Table */
+.table{border:1px solid var(--line);border-radius:16px;margin-bottom:30px;background:var(--panel)}
+table{width:100%;border-collapse:separate;border-spacing:0}
+th,td{text-align:right;padding:13px 18px}
+th{position:sticky;top:var(--sh,90px);z-index:4;background:#3a3984;box-shadow:0 2px 0 var(--teal);color:var(--teal);font-weight:400;font-size:1.05rem;border-bottom:1px solid var(--line)}
+td{border-bottom:1px solid var(--line);font-size:1.05rem}
+tr:last-child td{border-bottom:0}
+tbody tr:nth-child(even) td{background:rgba(255,255,255,.03)}
+tbody tr:hover td{background:rgba(79,214,219,.07)}
+td.dep{color:var(--accent);white-space:nowrap;width:1%}
+th:first-child{border-top-right-radius:15px}th:last-child{border-top-left-radius:15px}
+tr:last-child td:first-child{border-bottom-right-radius:15px}tr:last-child td:last-child{border-bottom-left-radius:15px}
+th.dep{width:1%;white-space:nowrap}
 mark{background:rgba(79,214,219,.25);color:#9ff7fa;border-radius:4px;padding:0 2px}
-.dep{
-  flex:0 0 auto;font-size:.85rem;font-weight:400;padding:5px 12px;border-radius:99px;white-space:nowrap;
-  color:var(--accent);background:color-mix(in srgb,var(--accent) 13%,transparent);
-  border:1px solid color-mix(in srgb,var(--accent) 35%,transparent)
-}
-.empty{text-align:center;padding:50px 20px;color:var(--muted);background:var(--panel);border:1px dashed var(--line);border-radius:16px}
-.empty div{font-size:2.4rem;margin-bottom:6px}
+td.empty{text-align:center;padding:44px 20px;color:var(--muted)}
+td.empty div{font-size:2.4rem;margin-bottom:6px}
 footer{margin-top:30px;text-align:center;color:#9a9dd0;font-size:.85rem;padding:20px 0 34px;border-top:1px solid var(--line)}
 footer b{color:var(--muted);font-weight:400}
 
 @media (max-width:600px){
-  .row{flex-wrap:wrap;gap:8px 12px;padding:12px}
-  .num{flex-basis:32px;height:32px}
-  .name{font-size:1rem}
-  .dep{margin-right:44px}
+  th,td{padding:11px 12px;font-size:.98rem}
+  #q{font-size:.9rem;padding:14px 42px 14px 40px}
+  .field svg{right:15px;width:20px;height:20px}
 }
 @media (prefers-reduced-motion:reduce){*{animation:none!important;transition:none!important}}
 </style>
 </head>
 <body>
 <div class="wrap">
+  <div class="top">
   <header>
     <img class="logo" src="logo.png" alt="شعار كلية علوم الحاسوب والرياضيات">
     <h1>كلية علوم الحاسوب والرياضيات</h1>
@@ -109,13 +114,14 @@ footer b{color:var(--muted);font-weight:400}
   <div class="search">
     <div class="field">
       <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><circle cx="11" cy="11" r="7"/><path d="m20 20-3.5-3.5"/></svg>
-      <input id="q" type="search" autocomplete="off" placeholder="اكتب اسم الطالب…">
+      <input id="q" type="search" autocomplete="off" placeholder="ابحث عن اسم الطالب عن طريق الاسم">
       <button id="clear" aria-label="مسح">✕</button>
     </div>
     <div class="info" id="info"></div>
   </div>
+  </div>
 
-  <main class="list" id="list"></main>
+  <main class="table"><table><thead><tr><th>الاسم</th><th class="dep">القسم</th></tr></thead><tbody id="list"></tbody></table></main>
 
 </div>
 <footer>designed by <b>OMAR INAAM</b></footer>
@@ -151,12 +157,17 @@ function render(){
   clr.classList.toggle("show",!!raw);
   const res=data.filter(s=>terms.every(t=>s.k.includes(t)));
   info.innerHTML=raw?`عدد النتائج: <b>${res.length}</b>`:"";
-  if(!res.length){list.innerHTML=`<div class="empty"><div>🔍</div>لا توجد نتائج مطابقة لـ «${esc(raw)}»<br>تأكد من كتابة الاسم بشكل صحيح أو جرّب جزءاً منه.</div>`;return}
-  list.innerHTML=res.map((s,k)=>`<div class="row" style="--accent:${color(s.d)};animation-delay:${Math.min(k,15)*18}ms"><div class="num">${s.i}</div><div class="name">${highlight(s.n,terms)}</div><div class="dep">${esc(s.d)}</div></div>`).join("");
+  if(!res.length){list.innerHTML=`<tr><td colspan="2" class="empty"><div>🔍</div>لا توجد نتائج مطابقة لـ «${esc(raw)}»<br>تأكد من كتابة الاسم بشكل صحيح أو جرّب جزءاً منه.</td></tr>`;return}
+  list.innerHTML=res.map(s=>`<tr style="--accent:${color(s.d)}"><td>${highlight(s.n,terms)}</td><td class="dep">${esc(s.d)}</td></tr>`).join("");
 }
 let tm;q.addEventListener("input",()=>{clearTimeout(tm);tm=setTimeout(render,120)});
 clr.onclick=()=>{q.value="";render();q.focus()};
 render();
+// ارتفاع شريط البحث لتثبيت رؤوس الأعمدة تحته
+const sb=document.querySelector(".top");
+addEventListener("scroll",()=>{const y=scrollY;if(y>140)sb.classList.add("compact");else if(y<10)sb.classList.remove("compact")},{passive:true});
+const setSh=()=>document.documentElement.style.setProperty("--sh",sb.offsetHeight+"px");
+setSh();addEventListener("resize",setSh);new ResizeObserver(setSh).observe(sb);sb.addEventListener("transitionend",setSh);
 </script>
 </body>
 </html>
